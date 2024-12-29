@@ -122,7 +122,7 @@ class _AddIncidentReportState extends State<AddIncidentReport> {
                                 borderSide: BorderSide(color: borderColor)),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: borderColor)),
-                            hintText: "Type Controller",
+                            hintText: "Incident Type",
                             hintStyle: GoogleFonts.plusJakartaSans(
                                 color: Colors.black, fontSize: 12)),
                       ),
@@ -132,7 +132,7 @@ class _AddIncidentReportState extends State<AddIncidentReport> {
                       child: const Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Description",
+                          "Location",
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 16),
                         ),
@@ -143,7 +143,7 @@ class _AddIncidentReportState extends State<AddIncidentReport> {
                       margin: const EdgeInsets.only(left: 10, right: 10),
                       padding: const EdgeInsets.all(8),
                       child: TextFormField(
-                        maxLines: 6,
+
                         controller: _postDescController,
                         style: GoogleFonts.plusJakartaSans(color: Colors.black),
                         decoration: InputDecoration(
@@ -157,7 +157,7 @@ class _AddIncidentReportState extends State<AddIncidentReport> {
                                 borderSide: BorderSide(color: borderColor)),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(color: borderColor)),
-                            hintText: "Enter Description",
+                            hintText: "Enter Location",
                             hintStyle: GoogleFonts.plusJakartaSans(
                                 color: Colors.black, fontSize: 12)),
                       ),
@@ -169,18 +169,18 @@ class _AddIncidentReportState extends State<AddIncidentReport> {
                         : Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SaveButton(
-                                title: "Post Articles",
+                                title: "Report",
                                 onTap: () async {
                                   if (_nameController.text.isEmpty) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
                                             content:
-                                                Text("Ads Name  is Required")));
+                                                Text("Title Name is Required")));
                                   } else if (_postDescController.text.isEmpty) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
                                             content: Text(
-                                                "Ads Description is Required")));
+                                                "Location is Required")));
                                   } else if (_image == null) {
                                     showMessageBar(
                                         "Image is Required", context);
@@ -200,7 +200,7 @@ class _AddIncidentReportState extends State<AddIncidentReport> {
                                       "title": _nameController.text,
                                       "description": _postDescController.text,
                                       "image": photoURL,
-                                      "authorName": snap['fullName'],
+
                                       "category": _typeController.text,
                                     });
                                     // await Database().addAds(
