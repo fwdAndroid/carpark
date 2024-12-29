@@ -65,10 +65,10 @@ class _MainDashboardState extends State<MainDashboard> {
                     : Icon(
                         Icons.explore,
                       ),
-                label: 'Donations',
+                label: 'Navigations',
               ),
               BottomNavigationBarItem(
-                label: "Favorite",
+                label: "Parking",
                 icon: _currentIndex == 2
                     ? Icon(
                         Icons.bookmark,
@@ -80,20 +80,8 @@ class _MainDashboardState extends State<MainDashboard> {
                       ),
               ),
               BottomNavigationBarItem(
-                label: "Petitions",
-                icon: _currentIndex == 3
-                    ? Icon(
-                        Icons.pedal_bike,
-                        size: 25,
-                        color: mainBtnColor,
-                      )
-                    : Icon(
-                        Icons.pending,
-                      ),
-              ),
-              BottomNavigationBarItem(
                 label: "Profile",
-                icon: _currentIndex == 4
+                icon: _currentIndex == 3
                     ? Icon(
                         Icons.account_circle_outlined,
                         size: 25,
