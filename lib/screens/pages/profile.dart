@@ -1,3 +1,4 @@
+import 'package:carpark/screens/feedback/feedback.dart';
 import 'package:carpark/utils/colors.dart';
 import 'package:carpark/widgets/logout_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -70,6 +71,18 @@ class _ProfileState extends State<Profile> {
             trailing: Icon(Icons.arrow_forward_ios),
             leading: Icon(Icons.notifications),
             title: Text("Notifications"),
+          ),
+          Divider(
+            color: black,
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (builder) => FeedbackScreen()));
+            },
+            trailing: Icon(Icons.arrow_forward_ios),
+            leading: Icon(Icons.feedback),
+            title: Text("FeebBack"),
           ),
           Divider(
             color: black,
