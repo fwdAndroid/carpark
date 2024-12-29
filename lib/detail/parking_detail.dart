@@ -23,7 +23,9 @@ class _ParkingDetailState extends State<ParkingDetail> {
 
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Center(child: Image.asset("asseets/logo.png",height: 300,)),
             Row(
               children: [
                 Text("Parking Space Name: ",style: TextStyle(color: black,fontSize: 22,fontWeight: FontWeight.bold),
