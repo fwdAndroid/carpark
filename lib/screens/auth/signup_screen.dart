@@ -32,7 +32,7 @@ class _SignupScreenState extends State<SignupScreen> {
           children: [
             Center(
               child: Image.asset(
-                "assets/user.png",
+                "assets/logo.png",
                 height: 100,
                 width: 100,
               ),
