@@ -1,5 +1,6 @@
 import 'package:carpark/screens/incident/add_incident_report.dart';
 import 'package:carpark/utils/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class IncidentReport extends StatefulWidget {
@@ -22,9 +23,41 @@ class _IncidentReportState extends State<IncidentReport> {
         backgroundColor: mainBtnColor,
       ),
       appBar: AppBar(),
-      body: Column(
-        children: [],
-      ),
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("incident").snapshots(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (snapshot.data!.docs.isEmpty) {
+              return Center(
+                child: Text(
+                  "No Incident Reported Yet",
+                  style: TextStyle(color: Colors.black),
+                ),
+              );
+            }
+            return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  final List<DocumentSnapshot> documents = snapshot.data!.docs;
+                  final Map<String, dynamic> data =
+                      documents[index].data() as Map<String, dynamic>;
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                          child: ListTile(
+                        title: Text(data['title']),
+                        subtitle: Text(data['description']),
+                      )),
+                    ),
+                  );
+                });
+          }),
     );
   }
 }
